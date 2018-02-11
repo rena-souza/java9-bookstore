@@ -3,9 +3,10 @@ package br.com.casadocodigo;
 import java.util.*;
 import java.util.stream.*;
 import java.util.function.*;
-import br.com.casadocodigo.data.*;
-import br.com.casadocodigo.model.*;
-import br.com.casadocodigo.service.*;
+import br.com.casadocodigo.http.*;
+import br.com.casadocodigo.nf.model.*;
+import br.com.casadocodigo.domain.model.*;
+import br.com.casadocodigo.nf.service.*;
 
 public class Main {
 

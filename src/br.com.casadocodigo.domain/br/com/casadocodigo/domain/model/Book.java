@@ -1,4 +1,4 @@
-package br.com.casadocodigo.model;
+package br.com.casadocodigo.domain.model;
 
 import java.util.*;
 
