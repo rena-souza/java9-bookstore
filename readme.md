@@ -1,15 +1,13 @@
 
 ### COMPILE ###
-javac --add-modules jdk.incubator.httpclient \
-  src/br/com/casadocodigo/*.java \
-  src/br/com/casadocodigo/model/*.java \
-  src/br/com/casadocodigo/service/*.java \
-  src/br/com/casadocodigo/data/*.java
 
+javac -d mods/br.com.casadocodigo \
+  --module-path mods \
+  src/br.com.casadocodigo/module-info.java \
+  $(find . -name "*.java")
 
-java --add-modules jdk.incubator.httpclient $(find . -name "*.java")
+"*
 
 ### RUN ###
 
-java --add-modules jdk.incubator.httpclient \
-  -cp src br.com.casadocodigo.Main
+java --module-path mods -m br.com.casadocodigo/br.com.casadocodigo.Main
