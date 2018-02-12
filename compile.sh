@@ -2,6 +2,7 @@
 
 rm -rf mods/
 rm -rf JRE-bookstore/
+rm -rf mlib/
 
 javac -d mods/br.com.casadocodigo.domain \
   --module-path mods \
@@ -27,3 +28,29 @@ echo "Generating JRE"
 jlink --module-path /usr/lib/jvm/java-9-oracle/jmods:mods \
  --add-modules br.com.casadocodigo \
  --output JRE-bookstore
+
+ echo "Generating modular jar"
+mkdir mlib
+
+packageName=br.com.casadocodigo
+
+jar --create \
+  --file=mlib/$packageName.domain-1.0.jar \
+  --module-version 1.0 \
+  -C mods/$packageName.domain .
+
+jar --create \
+  --file=mlib/$packageName.http-1.0.jar \
+  --module-version 1.0 \
+  -C mods/$packageName.http .
+
+jar --create \
+  --file=mlib/$packageName.nf-1.0.jar \
+  --module-version 1.0 \
+  -C mods/$packageName.nf .
+
+jar --create \
+  --file=mlib/$packageName-1.0.jar \
+  --module-version 1.0 \
+  --main-class=br.com.casadocodigo.Main \
+  -C mods/$packageName .
