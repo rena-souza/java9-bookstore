@@ -1,4 +1,8 @@
 
+jlink --module-path /usr/lib/jvm/java-9-oracle/jmods \
+ --add-modules java.base,jdk.incubator.httpclient \
+ --output small-JRE
+
 ### COMPILE ###
 
 javac -d mods/br.com.casadocodigo \

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rm -rf mods/
+rm -rf JRE-bookstore/
 
 javac -d mods/br.com.casadocodigo.domain \
   --module-path mods \
@@ -21,3 +22,8 @@ javac -d mods/br.com.casadocodigo \
   --module-path mods \
   src/br.com.casadocodigo/module-info.java \
   $(find src/br.com.casadocodigo -name "*.java")
+
+echo "Generating JRE"
+jlink --module-path /usr/lib/jvm/java-9-oracle/jmods:mods \
+ --add-modules br.com.casadocodigo \
+ --output JRE-bookstore

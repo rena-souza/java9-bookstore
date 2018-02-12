@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java --module-path mods -m br.com.casadocodigo/br.com.casadocodigo.Main
+JRE-bookstore/bin/java -m br.com.casadocodigo/br.com.casadocodigo.Main
