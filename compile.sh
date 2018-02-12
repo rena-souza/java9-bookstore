@@ -19,6 +19,11 @@ javac -d mods/br.com.casadocodigo.nf \
   src/br.com.casadocodigo.nf/module-info.java \
   $(find src/br.com.casadocodigo.nf -name "*.java")
 
+javac -d mods/br.com.casadocodigo.logging \
+  --module-path mods \
+  src/br.com.casadocodigo.logging/module-info.java \
+  $(find src/br.com.casadocodigo.logging -name "*.java")
+
 javac -d mods/br.com.casadocodigo \
   --module-path mods \
   src/br.com.casadocodigo/module-info.java \
@@ -26,7 +31,7 @@ javac -d mods/br.com.casadocodigo \
 
 echo "Generating JRE"
 jlink --module-path /usr/lib/jvm/java-9-oracle/jmods:mods \
- --add-modules br.com.casadocodigo \
+ --add-modules br.com.casadocodigo,br.com.casadocodigo.logging \
  --output JRE-bookstore
 
  echo "Generating modular jar"

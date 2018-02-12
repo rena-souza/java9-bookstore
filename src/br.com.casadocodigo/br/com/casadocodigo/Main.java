@@ -7,14 +7,20 @@ import br.com.casadocodigo.http.*;
 import br.com.casadocodigo.nf.model.*;
 import br.com.casadocodigo.domain.model.*;
 import br.com.casadocodigo.nf.service.*;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 
 public class Main {
 
+	private static final Logger logger = System.getLogger("CustomLogger");
+
 	private static void println(Object object){
-		System.out.println(String.valueOf(object));
+		logger.log(Level.INFO, String.valueOf(object));
 	}
 
 	public static void main(String... args) {
+
+		logger.log(Level.TRACE, "Iniciando a execução da bookstore");
 
 		println("\nLista de livros disponíveis \n");
 
@@ -51,7 +57,7 @@ public class Main {
 
 			emissor.close();
 		} catch(Exception e) {
-			System.err.println("Ops, aconteceu um erro: " + e);
+			logger.log(Level.ERROR, "Ops, aconteceu um erro: " + e);
 		}
 	}
 
