@@ -4,25 +4,16 @@ rm -rf mods/
 rm -rf JRE-bookstore/
 rm -rf mlib/
 
-javac -d mods/br.com.casadocodigo.domain \
-  --module-path mods \
-  src/br.com.casadocodigo.domain/module-info.java \
-  $(find src/br.com.casadocodigo.domain -name "*.java")
+declare -a modules=("tracking" "domain" "http" "nf" "logging")
 
-javac -d mods/br.com.casadocodigo.http \
-  --module-path mods \
-  src/br.com.casadocodigo.http/module-info.java \
-  $(find src/br.com.casadocodigo.http -name "*.java")
-
-javac -d mods/br.com.casadocodigo.nf \
-  --module-path mods \
-  src/br.com.casadocodigo.nf/module-info.java \
-  $(find src/br.com.casadocodigo.nf -name "*.java")
-
-javac -d mods/br.com.casadocodigo.logging \
-  --module-path mods \
-  src/br.com.casadocodigo.logging/module-info.java \
-  $(find src/br.com.casadocodigo.logging -name "*.java")
+for module in "${modules[@]}"
+do
+  echo "Compiling module $module"
+  javac -d mods/br.com.casadocodigo."$module" \
+    --module-path mods \
+    src/br.com.casadocodigo.$module/module-info.java \
+    $(find src/br.com.casadocodigo.$module -name "*.java")
+done
 
 javac -d mods/br.com.casadocodigo \
   --module-path mods \
